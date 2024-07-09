@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -36,4 +37,7 @@ public class Inventory {
 
     @OneToMany(mappedBy = "inventory",cascade = {CascadeType.ALL},orphanRemoval = true,fetch = FetchType.EAGER)
     private Set<OrderDetail>orderDetails;
+
+    @OneToMany(mappedBy = "inventory",cascade = {CascadeType.ALL},orphanRemoval = true,fetch = FetchType.EAGER)
+    private List<Transaction>transactions;
 }
