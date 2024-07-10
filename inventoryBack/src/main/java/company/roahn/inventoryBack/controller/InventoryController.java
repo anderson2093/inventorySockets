@@ -1,6 +1,7 @@
 package company.roahn.inventoryBack.controller;
 
 import company.roahn.inventoryBack.models.Inventory;
+import company.roahn.inventoryBack.service.IInventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
@@ -12,14 +13,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/api/inventario")
-public class InventarioController {
+public class InventoryController {
 
     @Autowired
-    private InventarioService inventarioService;
+    private IInventoryService service;
 
     @PostMapping("/update")
     public void updateInventario(@RequestBody Inventory inventory) {
-        inventarioService.updateInventario(inventory);
+        service.update(inventory);
         notifyInventarioChange(inventory);
     }
 
